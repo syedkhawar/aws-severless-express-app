@@ -1,5 +1,5 @@
 # aws-severless-express-app
-AWS serverless express app basic structure.
+AWS serverless express app with EJS Template engine basic structure.
 
 
 1- You need to install/Configure serverless if you are not done already
