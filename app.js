@@ -4,12 +4,30 @@ const awsServerlessExpressMiddleware = require('aws-serverless-express/middlewar
 const app = express();
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
-
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('test_database', 'sneakpeeks', 'sneakpeeks', {
+  host: 'sneakpeeks.c7utaq5cyk7t.us-east-2.rds.amazonaws.com',
+  dialect: 'mssql',
+  dialectOptions: {
+    encrypt: false
+  },
+  operatorsAliases: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+});
 
 // Requiring Controllers
 const homeCOntroller = require("./controllers/homeController");
 const todoCOntroller = require("./controllers/todoController");
 const userCOntroller = require("./controllers/userController");
+
+
+// MODELS
+
 
 
 app.set("view engine", "ejs");
@@ -30,7 +48,7 @@ app.use(cookieParser());
 // Trigger Controllers
 homeCOntroller(app, urlEncodedParser, csrfProtection);
 todoCOntroller(app, urlEncodedParser, csrfProtection);
-userCOntroller(app, urlEncodedParser, csrfProtection);
+userCOntroller(app, urlEncodedParser, csrfProtection, sequelize, Sequelize);
 
-  
+
 module.exports = app;

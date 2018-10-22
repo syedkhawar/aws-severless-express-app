@@ -22,8 +22,8 @@ provider:
   runtime: nodejs8.10
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: dev
+  region: us-east-2
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -69,7 +69,10 @@ functions:
           method: post 
       - http:
           path: /user/register
-          method: post                                            
+          method: post  
+      - http:
+          path: /users
+          method: get                                                    
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
