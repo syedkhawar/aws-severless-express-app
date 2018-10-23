@@ -5,8 +5,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('test_database', 'sneakpeeks', 'sneakpeeks', {
-  host: 'sneakpeeks.c7utaq5cyk7t.us-east-2.rds.amazonaws.com',
+const sequelize = new Sequelize('test_database', 'sneakpeek', 'sneakpeek', {
+  host: 'sneakpeek.c7utaq5cyk7t.us-east-2.rds.amazonaws.com',
   dialect: 'mssql',
   dialectOptions: {
     encrypt: false
